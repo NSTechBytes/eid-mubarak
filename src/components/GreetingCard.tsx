@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import CrescentMoon from "@/components/CrescentMoon";
 import { cn } from "@/lib/utils";
-import { Sparkles, Stars, Music, VolumeX } from "lucide-react";
+import { Sparkles, Stars, Music, VolumeX, Star, MoonIcon } from "lucide-react";
 
 interface GreetingCardProps {
   name: string;
@@ -118,13 +118,95 @@ const GreetingCard = ({ name, className }: GreetingCardProps) => {
           <p>May the divine blessings of Allah bring you hope, faith, and joy on Eid and forever.</p>
         </div>
         
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 h-2 w-2 rounded-full bg-yellow-300 animate-pulse"></div>
-          <div className="absolute top-3/4 left-1/2 h-3 w-3 rounded-full bg-yellow-300 animate-pulse"></div>
-          <div className="absolute top-2/3 left-1/3 h-2 w-2 rounded-full bg-yellow-300 animate-pulse"></div>
-          <div className="absolute top-1/2 left-3/4 h-2 w-2 rounded-full bg-yellow-300 animate-pulse"></div>
-          <div className="absolute top-1/3 right-1/4 h-2 w-2 rounded-full bg-yellow-300 animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/3 h-3 w-3 rounded-full bg-yellow-300 animate-pulse"></div>
+        {/* Enhanced animated background elements */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          {/* Animated stars in random positions */}
+          {[...Array(20)].map((_, i) => (
+            <div 
+              key={i}
+              className="absolute rounded-full bg-yellow-300/60"
+              style={{
+                height: `${Math.random() * 3 + 1}px`,
+                width: `${Math.random() * 3 + 1}px`,
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                animation: `float ${3 + Math.random() * 4}s ease-in-out infinite`,
+                animationDelay: `${Math.random() * 2}s`
+              }}
+            />
+          ))}
+          
+          {/* Animated particles */}
+          {[...Array(15)].map((_, i) => (
+            <div 
+              key={`particle-${i}`}
+              className="absolute rounded-full bg-white/40"
+              style={{
+                height: `${Math.random() * 6 + 2}px`,
+                width: `${Math.random() * 6 + 2}px`,
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                animation: `float ${4 + Math.random() * 6}s ease-in-out infinite, pulse ${2 + Math.random() * 4}s ease-in-out infinite alternate`,
+                animationDelay: `${Math.random() * 3}s`
+              }}
+            />
+          ))}
+          
+          {/* Animated star icons */}
+          {[...Array(8)].map((_, i) => (
+            <div 
+              key={`star-${i}`}
+              className="absolute"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                animation: `float ${4 + Math.random() * 5}s ease-in-out infinite`,
+                animationDelay: `${Math.random() * 3}s`,
+                transform: `rotate(${Math.random() * 360}deg)`
+              }}
+            >
+              <Star 
+                size={8 + Math.random() * 12} 
+                className="text-yellow-200 animate-pulse" 
+                style={{ animationDuration: `${2 + Math.random() * 3}s` }}
+              />
+            </div>
+          ))}
+          
+          {/* Animated moon icons */}
+          {[...Array(4)].map((_, i) => (
+            <div 
+              key={`moon-${i}`}
+              className="absolute"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                animation: `float ${5 + Math.random() * 3}s ease-in-out infinite`,
+                animationDelay: `${Math.random() * 2}s`,
+                opacity: 0.6,
+                transform: `rotate(${Math.random() * 360}deg)`
+              }}
+            >
+              <MoonIcon 
+                size={10 + Math.random() * 8} 
+                className="text-yellow-100" 
+              />
+            </div>
+          ))}
+          
+          {/* Light beam effects */}
+          <div className="absolute h-40 w-40 rounded-full bg-gradient-radial from-white/20 to-transparent animate-pulse"
+               style={{ top: '20%', left: '30%', animationDuration: '7s' }}></div>
+          <div className="absolute h-32 w-32 rounded-full bg-gradient-radial from-yellow-200/10 to-transparent animate-pulse"
+               style={{ bottom: '20%', right: '20%', animationDuration: '9s' }}></div>
+               
+          {/* Sparkle effects */}
+          <div className="absolute top-1/4 left-1/4 h-2 w-2 rounded-full bg-yellow-300 animate-ping opacity-75"
+               style={{ animationDuration: '3s', animationDelay: '1s' }}></div>
+          <div className="absolute bottom-1/3 right-1/3 h-2 w-2 rounded-full bg-yellow-300 animate-ping opacity-75"
+               style={{ animationDuration: '2.5s', animationDelay: '0.5s' }}></div>
+          <div className="absolute top-2/3 left-1/2 h-2 w-2 rounded-full bg-yellow-300 animate-ping opacity-75"
+               style={{ animationDuration: '4s', animationDelay: '2s' }}></div>
         </div>
       </CardContent>
     </Card>

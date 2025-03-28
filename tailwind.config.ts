@@ -108,6 +108,18 @@ export default {
 				'spin-slow': {
 					'0%': { transform: 'rotate(0deg)' },
 					'100%': { transform: 'rotate(360deg)' }
+				},
+				'pulse': {
+					'0%': { opacity: '0.4', transform: 'scale(1)' },
+					'50%': { opacity: '1', transform: 'scale(1.05)' },
+					'100%': { opacity: '0.4', transform: 'scale(1)' }
+				},
+				'ping': {
+					'75%, 100%': { transform: 'scale(2)', opacity: '0' }
+				},
+				'twinkle': {
+					'0%, 100%': { opacity: '0.2' },
+					'50%': { opacity: '1' }
 				}
 			},
 			animation: {
@@ -116,7 +128,10 @@ export default {
 				'float': 'float 4s ease-in-out infinite',
 				'fade-in': 'fade-in 1s ease-in-out',
 				'scale-in': 'scale-in 0.5s ease-out',
-				'spin-slow': 'spin-slow 12s linear infinite'
+				'spin-slow': 'spin-slow 12s linear infinite',
+				'pulse': 'pulse 3s ease-in-out infinite',
+				'ping': 'ping 2s cubic-bezier(0, 0, 0.2, 1) infinite',
+				'twinkle': 'twinkle 4s ease-in-out infinite'
 			},
 			backgroundImage: {
 				'eid-pattern': "url('/eid-pattern.svg')",
