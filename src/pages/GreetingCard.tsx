@@ -8,7 +8,7 @@ import CrescentMoon from "@/components/CrescentMoon";
 import GreetingCard from "@/components/GreetingCard";
 import { useEidGreeting } from "@/context/EidGreetingContext";
 import { useToast } from "@/components/ui/use-toast";
-import { Copy, Share } from "lucide-react";
+import { Share } from "lucide-react";
 
 const GreetingCardPage = () => {
   const { name, isCardReady } = useEidGreeting();
@@ -21,26 +21,7 @@ const GreetingCardPage = () => {
     }
   }, [isCardReady, navigate]);
 
-  const handleShare = () => {
-    if (navigator.share) {
-      navigator.share({
-        title: 'Eid Greeting',
-        text: `${name} has sent you an Eid greeting!`,
-        url: window.location.href,
-      })
-      .catch(() => {
-        toast({
-          title: "Sharing failed",
-          description: "Could not share this greeting",
-        });
-      });
-    } else {
-      // Fallback to clipboard
-      handleCopyLink();
-    }
-  };
-  
-  const handleCopyLink = () => {
+  const copyWebsiteUrl = () => {
     navigator.clipboard.writeText(window.location.href)
       .then(() => {
         toast({
@@ -77,20 +58,10 @@ const GreetingCardPage = () => {
             <Button 
               type="button" 
               className="bg-eid-green hover:bg-eid-darkgreen text-white"
-              onClick={handleShare}
+              onClick={copyWebsiteUrl}
             >
               <Share size={18} />
               Share Greeting
-            </Button>
-            
-            <Button 
-              type="button" 
-              variant="outline"
-              className="border-eid-gold text-eid-darkgreen hover:bg-eid-gold/20"
-              onClick={handleCopyLink}
-            >
-              <Copy size={18} />
-              Copy Link
             </Button>
             
             <Button 
