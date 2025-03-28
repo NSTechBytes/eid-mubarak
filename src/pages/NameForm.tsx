@@ -4,9 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import EidPatternBackground from "@/components/EidPatternBackground";
-import EidHeading from "@/components/EidHeading";
-import CrescentMoon from "@/components/CrescentMoon";
 import { useEidGreeting } from "@/context/EidGreetingContext";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -34,44 +31,34 @@ const NameForm = () => {
   };
   
   return (
-    <EidPatternBackground>
-      <div className="min-h-screen flex flex-col items-center justify-center p-4">
-        <div className="absolute top-10 left-10">
-          <CrescentMoon />
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-slate-50">
+      <div className="max-w-md w-full bg-white rounded-lg shadow-xl p-8 animate-fade-in">
+        <div className="text-center mb-6">
+          <h1 className="text-3xl font-bold text-gray-800">Welcome</h1>
+          <p className="text-gray-600">Enter your name to see your special greeting</p>
         </div>
         
-        <div className="max-w-md w-full bg-white/90 rounded-lg shadow-xl p-8 animate-fade-in">
-          <div className="text-center mb-6">
-            <EidHeading>Eid Greetings</EidHeading>
-            <p className="text-eid-green">Enter your name for a personalized Eid animation</p>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="space-y-2">
+            <Label htmlFor="name" className="text-gray-700 font-medium">Your Name</Label>
+            <Input
+              id="name"
+              placeholder="Enter your name"
+              value={inputName}
+              onChange={(e) => setInputName(e.target.value)}
+              className="border-gray-300 focus-visible:ring-blue-500"
+            />
           </div>
           
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="space-y-2">
-              <Label htmlFor="name" className="text-eid-darkgreen font-medium">Your Name</Label>
-              <Input
-                id="name"
-                placeholder="Enter your name"
-                value={inputName}
-                onChange={(e) => setInputName(e.target.value)}
-                className="border-eid-gold/50 focus-visible:ring-eid-gold"
-              />
-            </div>
-            
-            <Button 
-              type="submit" 
-              className="w-full bg-eid-green hover:bg-eid-darkgreen text-white"
-            >
-              Show Greeting
-            </Button>
-          </form>
-        </div>
-        
-        <div className="absolute bottom-10 right-10">
-          <CrescentMoon />
-        </div>
+          <Button 
+            type="submit" 
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+          >
+            Continue
+          </Button>
+        </form>
       </div>
-    </EidPatternBackground>
+    </div>
   );
 };
 
