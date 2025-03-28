@@ -10,7 +10,7 @@ import { useEidGreeting } from "@/context/EidGreetingContext";
 import { useToast } from "@/components/ui/use-toast";
 
 const GreetingCardPage = () => {
-  const { name, greetingType, isCardReady } = useEidGreeting();
+  const { name, isCardReady } = useEidGreeting();
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -45,31 +45,20 @@ const GreetingCardPage = () => {
     <EidPatternBackground>
       <div className="min-h-screen flex flex-col items-center justify-center p-6">
         <div className="absolute top-10 left-10 md:left-20">
-          <CrescentMoon />
+          <CrescentMoon className="animate-float" />
         </div>
         
         <div className="w-full max-w-2xl animate-fade-in">
           <div className="text-center mb-8">
-            <EidHeading>Your Eid Greeting</EidHeading>
-            <p className="text-eid-green">Here's your personalized Eid greeting card</p>
+            <EidHeading className="animate-scale-in">Eid Mubarak</EidHeading>
           </div>
           
           <GreetingCard 
             name={name}
-            greetingType={greetingType}
-            className="mb-8"
+            className="mb-8 animate-scale-in"
           />
           
           <div className="flex flex-wrap justify-center gap-4">
-            <Button 
-              type="button" 
-              variant="outline"
-              className="border-eid-gold text-eid-darkgreen"
-              onClick={() => navigate('/greeting-type')}
-            >
-              Edit Greeting
-            </Button>
-            
             <Button 
               type="button" 
               className="bg-eid-green hover:bg-eid-darkgreen text-white"
@@ -90,7 +79,7 @@ const GreetingCardPage = () => {
         </div>
         
         <div className="absolute bottom-10 right-10 md:right-20">
-          <CrescentMoon />
+          <CrescentMoon className="animate-float" />
         </div>
       </div>
     </EidPatternBackground>

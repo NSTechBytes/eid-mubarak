@@ -11,7 +11,7 @@ import { useEidGreeting } from "@/context/EidGreetingContext";
 import { useToast } from "@/components/ui/use-toast";
 
 const NameForm = () => {
-  const { name, setName } = useEidGreeting();
+  const { name, setName, setIsCardReady } = useEidGreeting();
   const [inputName, setInputName] = useState(name);
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -29,7 +29,8 @@ const NameForm = () => {
     }
     
     setName(inputName.trim());
-    navigate('/greeting-type');
+    setIsCardReady(true);
+    navigate('/card');
   };
   
   return (
@@ -42,7 +43,7 @@ const NameForm = () => {
         <div className="max-w-md w-full bg-white/90 rounded-lg shadow-xl p-8 animate-fade-in">
           <div className="text-center mb-6">
             <EidHeading>Eid Greetings</EidHeading>
-            <p className="text-eid-green">Create your personalized Eid greeting</p>
+            <p className="text-eid-green">Enter your name for a personalized Eid animation</p>
           </div>
           
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -61,7 +62,7 @@ const NameForm = () => {
               type="submit" 
               className="w-full bg-eid-green hover:bg-eid-darkgreen text-white"
             >
-              Continue
+              Show Greeting
             </Button>
           </form>
         </div>

@@ -1,13 +1,9 @@
 
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
-type GreetingType = "eid-mubarak" | "eid-saeed" | "happy-eid";
-
 interface EidGreetingContextType {
   name: string;
   setName: (name: string) => void;
-  greetingType: GreetingType;
-  setGreetingType: (type: GreetingType) => void;
   isCardReady: boolean;
   setIsCardReady: (ready: boolean) => void;
 }
@@ -16,7 +12,6 @@ const EidGreetingContext = createContext<EidGreetingContextType | undefined>(und
 
 export const EidGreetingProvider = ({ children }: { children: ReactNode }) => {
   const [name, setName] = useState("");
-  const [greetingType, setGreetingType] = useState<GreetingType>("eid-mubarak");
   const [isCardReady, setIsCardReady] = useState(false);
 
   return (
@@ -24,8 +19,6 @@ export const EidGreetingProvider = ({ children }: { children: ReactNode }) => {
       value={{
         name,
         setName,
-        greetingType,
-        setGreetingType,
         isCardReady,
         setIsCardReady
       }}
