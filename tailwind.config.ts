@@ -100,16 +100,27 @@ export default {
 				'fade-in': {
 					'0%': { opacity: '0' },
 					'100%': { opacity: '1' }
+				},
+				'scale-in': {
+					'0%': { transform: 'scale(0.95)', opacity: '0' },
+					'100%': { transform: 'scale(1)', opacity: '1' }
+				},
+				'spin-slow': {
+					'0%': { transform: 'rotate(0deg)' },
+					'100%': { transform: 'rotate(360deg)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'float': 'float 4s ease-in-out infinite',
-				'fade-in': 'fade-in 1s ease-in-out'
+				'fade-in': 'fade-in 1s ease-in-out',
+				'scale-in': 'scale-in 0.5s ease-out',
+				'spin-slow': 'spin-slow 12s linear infinite'
 			},
 			backgroundImage: {
-				'eid-pattern': "url('/eid-pattern.svg')"
+				'eid-pattern': "url('/eid-pattern.svg')",
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 			}
 		}
 	},

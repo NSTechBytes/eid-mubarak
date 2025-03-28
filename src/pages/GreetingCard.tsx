@@ -8,7 +8,7 @@ import CrescentMoon from "@/components/CrescentMoon";
 import GreetingCard from "@/components/GreetingCard";
 import { useEidGreeting } from "@/context/EidGreetingContext";
 import { useToast } from "@/components/ui/use-toast";
-import { Share } from "lucide-react";
+import { Share, Star, Moon } from "lucide-react";
 
 const GreetingCardPage = () => {
   const { name, isCardReady } = useEidGreeting();
@@ -79,13 +79,16 @@ const GreetingCardPage = () => {
           <CrescentMoon className="animate-float" />
         </div>
         
-        {/* Floating decorative elements */}
+        {/* Enhanced floating decorative elements */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          {[...Array(10)].map((_, i) => (
+          {/* Animated stars in random positions */}
+          {[...Array(15)].map((_, i) => (
             <div 
               key={i}
-              className="absolute h-2 w-2 rounded-full bg-eid-gold/60"
+              className="absolute rounded-full bg-eid-gold/60"
               style={{
+                height: `${Math.random() * 4 + 2}px`,
+                width: `${Math.random() * 4 + 2}px`,
                 top: `${Math.random() * 100}%`,
                 left: `${Math.random() * 100}%`,
                 animation: `float ${3 + Math.random() * 4}s ease-in-out infinite`,
@@ -93,6 +96,52 @@ const GreetingCardPage = () => {
               }}
             />
           ))}
+          
+          {/* Animated star icons */}
+          {[...Array(5)].map((_, i) => (
+            <div 
+              key={`star-${i}`}
+              className="absolute"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                animation: `float ${4 + Math.random() * 5}s ease-in-out infinite`,
+                animationDelay: `${Math.random() * 3}s`
+              }}
+            >
+              <Star 
+                size={10 + Math.random() * 15} 
+                className="text-eid-gold animate-pulse" 
+                style={{ animationDuration: `${2 + Math.random() * 3}s` }}
+              />
+            </div>
+          ))}
+          
+          {/* Animated moon icons */}
+          {[...Array(3)].map((_, i) => (
+            <div 
+              key={`moon-${i}`}
+              className="absolute"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                animation: `float ${5 + Math.random() * 3}s ease-in-out infinite`,
+                animationDelay: `${Math.random() * 2}s`,
+                opacity: 0.7
+              }}
+            >
+              <Moon 
+                size={15 + Math.random() * 10} 
+                className="text-eid-gold" 
+              />
+            </div>
+          ))}
+          
+          {/* Animated light beams */}
+          <div className="absolute h-96 w-96 rounded-full bg-gradient-radial from-yellow-200/20 to-transparent animate-pulse"
+               style={{ top: '10%', left: '20%', animationDuration: '8s' }}></div>
+          <div className="absolute h-64 w-64 rounded-full bg-gradient-radial from-yellow-200/10 to-transparent animate-pulse"
+               style={{ bottom: '10%', right: '20%', animationDuration: '10s' }}></div>
         </div>
       </div>
     </EidPatternBackground>

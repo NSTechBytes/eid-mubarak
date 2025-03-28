@@ -12,7 +12,7 @@ interface GreetingCardProps {
 
 const GreetingCard = ({ name, className }: GreetingCardProps) => {
   const [colorIndex, setColorIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   
   const rgbColors = [
@@ -32,10 +32,21 @@ const GreetingCard = ({ name, className }: GreetingCardProps) => {
     return () => clearInterval(colorInterval);
   }, []);
 
-  // Initialize audio element
+  // Initialize audio element and start playing automatically
   useEffect(() => {
     audioRef.current = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
     audioRef.current.loop = true;
+    
+    // Try to autoplay when component mounts
+    const playPromise = audioRef.current.play();
+    
+    if (playPromise !== undefined) {
+      playPromise.catch(error => {
+        console.error("Audio autoplay failed:", error);
+        setIsPlaying(false);
+        // User interaction may be required due to browser autoplay policy
+      });
+    }
     
     return () => {
       if (audioRef.current) {
@@ -51,13 +62,11 @@ const GreetingCard = ({ name, className }: GreetingCardProps) => {
       if (isPlaying) {
         audioRef.current.pause();
       } else {
-        // Try to play and handle any autoplay restrictions
         const playPromise = audioRef.current.play();
         
         if (playPromise !== undefined) {
           playPromise.catch(error => {
             console.error("Audio playback failed:", error);
-            // User interaction required due to autoplay policy
           });
         }
       }
