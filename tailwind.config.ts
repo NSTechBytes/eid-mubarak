@@ -143,6 +143,39 @@ export default {
 				'shimmer': {
 					'0%': { backgroundPosition: '-200% 0' },
 					'100%': { backgroundPosition: '200% 0' }
+				},
+				// New RGB animations
+				'rainbow-glow': {
+					'0%': { filter: 'hue-rotate(0deg) brightness(1)' },
+					'25%': { filter: 'hue-rotate(90deg) brightness(1.2)' },
+					'50%': { filter: 'hue-rotate(180deg) brightness(1)' },
+					'75%': { filter: 'hue-rotate(270deg) brightness(1.2)' },
+					'100%': { filter: 'hue-rotate(360deg) brightness(1)' }
+				},
+				'rgb-shift': {
+					'0%': { backgroundColor: 'rgba(255, 0, 0, 0.2)' },
+					'33%': { backgroundColor: 'rgba(0, 255, 0, 0.2)' },
+					'66%': { backgroundColor: 'rgba(0, 0, 255, 0.2)' },
+					'100%': { backgroundColor: 'rgba(255, 0, 0, 0.2)' }
+				},
+				'color-pulse': {
+					'0%, 100%': { backgroundColor: 'rgba(255, 165, 0, 0.15)' },
+					'25%': { backgroundColor: 'rgba(255, 105, 180, 0.15)' },
+					'50%': { backgroundColor: 'rgba(75, 0, 130, 0.15)' },
+					'75%': { backgroundColor: 'rgba(0, 191, 255, 0.15)' }
+				},
+				'rgb-border': {
+					'0%': { borderColor: 'rgba(255, 0, 0, 0.5)' },
+					'33%': { borderColor: 'rgba(0, 255, 0, 0.5)' },
+					'66%': { borderColor: 'rgba(0, 0, 255, 0.5)' },
+					'100%': { borderColor: 'rgba(255, 0, 0, 0.5)' }
+				},
+				'rgb-text': {
+					'0%': { color: '#ff8a8a' },
+					'25%': { color: '#a0ff8a' },
+					'50%': { color: '#8aceff' },
+					'75%': { color: '#d78aff' },
+					'100%': { color: '#ff8a8a' }
 				}
 			},
 			animation: {
@@ -159,12 +192,21 @@ export default {
 				'drift-y': 'drift-y 6s ease-in-out infinite',
 				'glow': 'glow 3s ease-in-out infinite',
 				'color-shift': 'color-shift 8s ease-in-out infinite',
-				'shimmer': 'shimmer 8s ease-in-out infinite'
+				'shimmer': 'shimmer 8s ease-in-out infinite',
+				// New RGB animations
+				'rainbow-glow': 'rainbow-glow 8s linear infinite',
+				'rgb-shift': 'rgb-shift 12s ease-in-out infinite',
+				'color-pulse': 'color-pulse 15s ease-in-out infinite',
+				'rgb-border': 'rgb-border 10s linear infinite',
+				'rgb-text': 'rgb-text 8s ease-in-out infinite'
 			},
 			backgroundImage: {
 				'eid-pattern': "url('/eid-pattern.svg')",
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'shimmer-gradient': 'linear-gradient(to right, transparent 0%, rgba(255,255,255,0.2) 20%, transparent 40%)',
+				// RGB gradients
+				'rainbow-gradient': 'linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff)',
+				'aurora-gradient': 'linear-gradient(60deg, rgba(0, 255, 255, 0.3), rgba(0, 255, 0, 0.3), rgba(255, 0, 255, 0.3))'
 			}
 		}
 	},
