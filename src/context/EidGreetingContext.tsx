@@ -6,6 +6,8 @@ interface EidGreetingContextType {
   setName: (name: string) => void;
   isCardReady: boolean;
   setIsCardReady: (ready: boolean) => void;
+  greetingType: string;
+  setGreetingType: (type: string) => void;
 }
 
 const EidGreetingContext = createContext<EidGreetingContextType | undefined>(undefined);
@@ -13,6 +15,7 @@ const EidGreetingContext = createContext<EidGreetingContextType | undefined>(und
 export const EidGreetingProvider = ({ children }: { children: ReactNode }) => {
   const [name, setName] = useState("");
   const [isCardReady, setIsCardReady] = useState(false);
+  const [greetingType, setGreetingType] = useState("standard");
 
   return (
     <EidGreetingContext.Provider
@@ -20,7 +23,9 @@ export const EidGreetingProvider = ({ children }: { children: ReactNode }) => {
         name,
         setName,
         isCardReady,
-        setIsCardReady
+        setIsCardReady,
+        greetingType,
+        setGreetingType
       }}
     >
       {children}
