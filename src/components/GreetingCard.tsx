@@ -34,7 +34,7 @@ const GreetingCard = ({ name, className }: GreetingCardProps) => {
 
   // Initialize audio element and start playing automatically
   useEffect(() => {
-    audioRef.current = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
+    audioRef.current = new Audio("/sound.mp3");
     audioRef.current.loop = true;
     
     // Try to autoplay when component mounts
